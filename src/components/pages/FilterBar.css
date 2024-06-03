@@ -1,0 +1,123 @@
+/* src/components/FilterBar.css */
+.filter-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+max-width: 20% ;
+  margin: 20px auto;
+}
+
+.filter-bar label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.filter-bar input[type="text"] {
+  padding: 8px;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.filter-bar select {
+  padding: 8px;
+  font-size: 14px;
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.type-filters {
+  width: 100%;
+}
+
+.type-filters h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.type-filters div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.type-filters input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.type-filters label {
+  font-size: 14px;
+  color: #555;
+}
+
+
+.show-more-button-type {
+  display: flex;
+  align-items: center;
+  background-color: #687683;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px;
+  margin-top: 10px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.show-more-button-type:hover {
+  background-color: #5a6268;
+  transform: scale(1.05);
+}
+
+.show-more-button-type svg {
+  margin-right: 5px;
+}
+
+
+
+
+/* Media query pour les vues mobiles */
+@media (max-width: 768px) {
+  .filter-bar {
+    display: flex;
+    align-items: center; /* Center align for better mobile display */
+flex-wrap: wrap;
+width: 100% !important;
+max-width: 100% !important;
+  }
+
+  .filter-bar label, 
+  .filter-bar input[type="text"], 
+  .filter-bar select, 
+  .type-filters h3, 
+  .type-filters div, 
+  .show-more-button-type {
+    width: 100%; /* Make all elements take full width */
+    max-width: none; /* Remove any max-width */
+  }
+
+  .filter-bar input[type="text"], 
+  .filter-bar select {
+    margin-bottom: 10px; /* Reduce margin for better spacing */
+  }
+
+  .type-filters div {
+    justify-content: center; /* Center align checkboxes */
+  }
+
+  .show-more-button-type {
+    width: auto; /* Adjust width for better fit */
+  }
+}

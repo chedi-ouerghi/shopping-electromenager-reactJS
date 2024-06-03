@@ -1,0 +1,30 @@
+.checkout-background {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('https://media.giphy.com/media/3ohzdIuqJoo8QdKlnW/giphy.gif') no-repeat center center;
+  background-size: cover;
+}
+
+.modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: white;
+  border: 2px solid #000;
+  box-shadow: 24px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

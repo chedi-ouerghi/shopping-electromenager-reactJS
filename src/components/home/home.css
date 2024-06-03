@@ -1,0 +1,333 @@
+/* Cacher la barre de défilement par défaut */
+.cards_home::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+
+}
+
+.cards_home::-webkit-scrollbar-track {
+  background: transparent; /* Couleur de fond de la barre de défilement */
+}
+
+.cards_home::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3); /* Couleur de la poignée de la barre de défilement */
+  border-radius: 10px; /* Bordure arrondie de la poignée */
+}
+
+.cards_home::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5); /* Couleur de la poignée de la barre de défilement lorsqu'elle est survolée */
+}
+
+.page {
+    width: 90%;
+    position: relative;
+    left: 5%;
+    overflow: hidden;
+}
+
+.banner-section{
+      width: 80%;
+    height: 55vh;
+    position: relative;
+    left: 10%;
+    margin: 2% 0%;
+}
+
+.image-banner{
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-container {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+    margin-bottom: 50px;
+
+}
+.gallery-content {
+    position: relative;
+    z-index: 1;
+    overflow-y: auto;
+    height: 100%;
+    display: flex;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.title_Home{
+width: 100%;
+height: 8vh;
+background-color: #888;
+display: flex;
+justify-content: flex-start;
+align-items: center;
+font-size: 1.5em;
+}
+
+.description {
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cards_home {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 20px; /* Espace entre les cartes */
+}
+
+.Width_cards {
+    flex: 0 0 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+}
+
+.card-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.product-image-card {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.category {
+  font-size: 1.1em;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.author {
+  font-size: 1em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-weight: bold;
+  color: #000;
+}
+
+.details-link {
+  font-size: 1em;
+  color: #007bff;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.details-link:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .cards_home {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .Width_cards {
+    flex: 0 0 45%; /* Deux cartes par ligne sur les petits écrans */
+  }
+
+  .product-image-card {
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .Width_cards {
+    flex: 0 0 100%; /* Une carte par ligne sur les très petits écrans */
+  }
+}
+
+@media (max-width: 768px) {
+
+    .banner-section {
+        width: 100%;
+        height: 20vh;
+        left: 0;
+    }
+ 
+.image-banner{
+  height: 100%;
+}
+}
+
+/* Styles actuels pour le desktop */
+.gallery {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer et Edge */
+
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  margin: 20px;
+  overflow-y: hidden;
+  overflow-x: auto;
+  width: calc(100% - 40px);
+  height: auto;
+}
+
+/* Barre de défilement pour Firefox */
+.gallery {
+  scrollbar-color: #888 transparent; /* Couleur de la barre de défilement */
+}
+
+.gallery:hover {
+  scrollbar-color: #555 transparent; /* Couleur de la barre de défilement lorsqu'elle est survolée */
+}
+
+
+
+.image-card {
+  margin: 0 15px;
+  position: relative;
+  border: 3px solid #fff;
+  border-radius: 15px;
+  width: 25%;
+  flex: 0 0 auto; /* Flex shrink and grow properties */
+}
+
+.image-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.3s, opacity 0.3s;
+  border-radius: 15px;
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgb(255 255 255);
+  color: #000;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: background 0.3s;
+  border-radius: 0 0 15px 15px;
+}
+
+.image-card:hover .image-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+}
+
+.margin-top-15 {
+  margin-top: 25px;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+/* Util */
+.bold {
+  font-weight: bold;
+}
+
+.text {
+  line-height: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.btn {
+  width: 25px;
+  aspect-ratio: 1 / 1;
+  background: rgba(0 0 0 / 0.2);
+  display: grid;
+  place-items: center;
+  border-radius: 3px;
+  
+  transition: background 150ms ease-in-out;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  background: rgba(0 0 0 / 0.4);
+}
+
+/* Media query pour les vues mobiles */
+@media (max-width: 768px) {
+  .gallery {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 10px;
+    width: 100%;
+  }
+
+  .image-card {
+    margin: 10px;
+    width: calc(50% - 20px); /* Deux éléments par ligne */
+    flex: 0 0 calc(50% - 20px); /* Empêcher l'extension des éléments */
+  }
+
+  .image-card img {
+    height: auto; /* Ajuster la hauteur automatiquement pour maintenir les proportions */
+  }
+
+  .image-overlay {
+    padding: 5px; /* Réduire la taille de l'overlay pour mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .image-card {
+    width: calc(100% - 20px); /* Un élément par ligne */
+    flex: 0 0 calc(100% - 20px); /* Empêcher l'extension des éléments */
+  }
+
+  .image-card img {
+    height: auto; /* Ajuster la hauteur automatiquement pour maintenir les proportions */
+  }
+
+  .image-overlay {
+    padding: 5px; /* Réduire la taille de l'overlay pour mobile */
+  }
+
+.page {
+    width: 90%;
+    position: relative;
+    left: 5%;
+    overflow: hidden;
+}
+
+main {
+    width: 100%;
+overflow-x: hidden;
+  }
+
+}
