@@ -86,6 +86,7 @@ const ProductList = () => {
     <div className="product-list">
       <div className="filter-and-products">
         <FilterBar
+          className="filtre-barre"
           products={products}
           onSort={handleSortChange}
           onSearch={handleSearchChange}

@@ -83,9 +83,29 @@
   padding: 45px 45px 90px;
 }
 
-@media (min-width: 78.125em) {
+@media (max-width: 480px) {
+
+  .container{
+width: 100% !important;
+margin-bottom: 2%;
+  }
+
   .container--testimonials-temoignages {
     padding: 0;
-    max-width: 1160px;
+    max-width: 100%;
+     display: flex ;
+     flex-wrap: nowrap;
+     gap: 1px;
+     justify-content: flex-start;
+overflow-x: auto;
+width: 100%;
+height: auto;
   }
+
+  .testimonial-temoignages{
+   flex: 0 0 85%;
+       margin: 0;
+  }
+
+
 }

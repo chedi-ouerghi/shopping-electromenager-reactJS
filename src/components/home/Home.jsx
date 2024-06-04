@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import { Alert, Snackbar } from '@mui/material';
 import Newsletter from '../pages/Newsletter';
+import BannerSection from '../pages/BannerSection';
 
 function Home() {
   const [topSellingProducts, setTopSellingProducts] = useState([]);
@@ -47,8 +48,19 @@ function Home() {
   };
 
   return (
-          <div className='page'>
+    <>
 
+{/* Cercle en haut */}
+      <div className="circle top"></div>
+   {/* Cercle au centre */}
+      <div className="circle center"></div>
+
+      {/* Cercle en bas */}
+      <div className="circle bottom"></div>
+
+       <div className='page'>
+
+      
       {/* Snackbar pour la publicité */}
       <Snackbar open={showAd} autoHideDuration={10000} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
         <Alert onClose={handleClose} severity="info">
@@ -65,13 +77,12 @@ function Home() {
       </Snackbar>
 
       {/* Section de la bannière promotionnelle */}
-      <section className="banner-section">
-        <img src="./banner-electromenager.jpg" alt="Bannière promotionnelle" className="image-banner" />
+      <section className="banner-section-home">
+        <BannerSection />
       </section>
 
       {/* Liste des produits */}
-      <h1 className='title_Home'>Top Vente</h1>
-      {/* <h1 style={{ fontSize: '2em', marginBottom: '20px', textAlign: 'center' }}>Top Vente</h1> */}
+      <h1 className='title_Home_barre'>Top Vente</h1>
       <div className="gallery-container">
         <div className="gallery-content">
           {topSellingProducts.map(product => (
@@ -84,8 +95,12 @@ function Home() {
           ))}
         </div>
       </div>
-
-      <h1 className='title_Home'>Liste des Produits</h1>
+      <div className='linkandtitle'>
+        <h1 className='title_Home'>Liste des Produits</h1>
+        <Link to="/products" className="show-more-button-home" >
+          <AddIcon className="show-more-icon" />Voir plus
+        </Link>
+      </div>
       <div className="cards_home">
         {products.slice(0, 10).map(product => (
           <div className='Width_cards'>
@@ -103,17 +118,15 @@ function Home() {
           </div>
         ))}
       </div>
-
-      <Link to="/products" className="show-more-button" style={{ textAlign: 'center', display: 'block', margin: '20px auto' }}>
-        <AddIcon className="show-more-icon" />Voir plus
-      </Link>
-
-      <h1 className='title_Home'>Témoignages clients</h1>
+      <h1 className='title_Home_barre'>Témoignages clients</h1>
       <Temoignages />
-      
-            <h1 className='title_Home'>Subscribe</h1>
+      <h1 className='title_Home_barre'>Subscribe</h1>
       <Newsletter/>
+      
+   
     </div>
+    </>
+   
   );
 }
 

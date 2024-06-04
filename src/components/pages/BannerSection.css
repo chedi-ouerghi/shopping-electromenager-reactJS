@@ -1,0 +1,39 @@
+.banner-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+    height: 100%;
+
+}
+
+.image-small {
+  width: 20%;
+  height: 100%;
+}
+
+.image-large {
+    width: 55%;
+    height: 100%;
+}
+@media (max-width: 480px) {
+
+
+.banner-section{
+display: flex;
+flex-direction: column;
+width: 100%;
+}
+
+.image-small {
+  width: 100%;
+  height: 100px;
+}
+
+.image-large {
+    width: 100%;
+    height: 100%;
+}
+
+
+}

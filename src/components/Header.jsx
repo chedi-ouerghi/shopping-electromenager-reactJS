@@ -5,15 +5,12 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const Header = () => {
   const [cartItemCount, setCartItemCount] = useState(0);
 
-  // useEffect(() => {
-  //   const cartItemsFromLocalStorage = JSON.parse(localStorage.getItem('cart')) || [];
-  //   setCartItemCount(cartItemsFromLocalStorage.length);
-  // }, []);
+  useEffect(() => {
+    const cartItemsFromLocalStorage = JSON.parse(localStorage.getItem('cart')) || [];
+    setCartItemCount(cartItemsFromLocalStorage.length);
+  }, []);
 
-    useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    setCartItemCount(cart);
-    }, []);
+
   
   return (
     <header>
