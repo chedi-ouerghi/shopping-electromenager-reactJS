@@ -33,7 +33,23 @@ display: flex;
     width: 75%;
 }
 
-
+.show-more-span{
+  width: 10%;
+  height: 40px;
+  position: relative;
+  left: 88%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.show-more-span:hover {
+color: #333;
+}
 
 .show-more-button {
   width: 10%;

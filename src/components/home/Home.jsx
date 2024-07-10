@@ -42,24 +42,12 @@ function Home() {
     productUrl: 'https://www.example.com/products/refrigerator-bosch'
   };
 
-  // Function to handle closing the ad
   const handleClose = () => {
     setShowAd(false);
   };
 
   return (
-    <>
-
-{/* Cercle en haut */}
-      <div className="circle top"></div>
-   {/* Cercle au centre */}
-      <div className="circle center"></div>
-
-      {/* Cercle en bas */}
-      <div className="circle bottom"></div>
-
        <div className='page'>
-
       
       {/* Snackbar pour la publicité */}
       <Snackbar open={showAd} autoHideDuration={10000} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
@@ -125,7 +113,6 @@ function Home() {
       
    
     </div>
-    </>
    
   );
 }

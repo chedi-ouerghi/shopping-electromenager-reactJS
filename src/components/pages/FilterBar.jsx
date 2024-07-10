@@ -1,4 +1,3 @@
-// src/components/FilterBar.jsx
 import React, { useState, useEffect } from 'react';
 import './FilterBar.css';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -12,11 +11,11 @@ const FilterBar = ({ products, onSort, onSearch, onFilterByTypes }) => {
 
   useEffect(() => {
     onSearch(searchTerm);
-  }, [searchTerm]);
+  }, [searchTerm, onSearch]);
 
   useEffect(() => {
     onFilterByTypes(selectedTypes);
-  }, [selectedTypes]);
+  }, [selectedTypes, onFilterByTypes]);
 
   const handleSortChange = (event) => {
     onSort(event.target.value);

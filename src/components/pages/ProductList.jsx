@@ -99,8 +99,8 @@ const ProductList = () => {
             ))}
           </div>
           {visibleCount < filteredProducts.length && (
-            <button className="show-more-button" onClick={handleShowMore}>
-              <AddIcon className="show-more-icon" /> plus
+            <button className="show-more-span" onClick={handleShowMore}>
+              Voir <AddIcon className="show-more-icon" /> 
             </button>
           )}
         </div>
