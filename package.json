@@ -18,7 +18,7 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^4.3.5"
+    "@babel/plugin-proposal-private-property-in-object": "^7.14.5"
   },
   "scripts": {
     "start": "react-scripts start",
