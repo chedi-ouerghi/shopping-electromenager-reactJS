@@ -76,7 +76,7 @@ nav ul li a {
 }
 
 
-@media (max-width: 480px) {
+@media (max-width: 480px) { 
 body{
   width: 80% !important;
 }
