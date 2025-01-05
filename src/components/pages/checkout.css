@@ -1,30 +1,92 @@
-.checkout-background {
-  position: relative;
+/* checkout.css */
+
+/* Wrapper pour la page de checkout */
+.checkout-wrapper {
+  background-color: rgba(188, 188, 188, 0.4); 
   height: 100vh;
-  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: url('https://media.giphy.com/media/3ohzdIuqJoo8QdKlnW/giphy.gif') no-repeat center center;
-  background-size: cover;
-}
-
-.modal-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
-  background-color: white;
-  border: 2px solid #000;
-  box-shadow: 24px;
+  align-items: center;
   padding: 20px;
-  display: flex;
-  flex-direction: column;
 }
 
+
+
+
+/* Conteneur de la modale */
+.modal-container {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  transition: all 0.3s ease-in-out;
+  position: sticky;
+  top: 20%;
+  left: 40%;
+}
+
+/* Titre de la modale */
+.modal-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Formulaire de paiement */
 .payment-form {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+}
+
+/* Champs de texte */
+.MuiTextField-root {
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+/* Champs Date d'expiration et CVV alignés */
+.expiration-cvv {
+  display: flex;
+  justify-content: space-between;
   gap: 10px;
+}
+
+.expiration-cvv .MuiTextField-root {
+  flex: 1;
+}
+
+/* Bouton de paiement */
+.pay-button {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.pay-button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+  .modal-container {
+    padding: 20px;
+  }
+
+  .expiration-cvv {
+    flex-direction: column;
+  }
+
+  .expiration-cvv .MuiTextField-root {
+    width: 100%;
+  }
 }

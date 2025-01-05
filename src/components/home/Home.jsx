@@ -1,119 +1,102 @@
 import React, { useState, useEffect } from 'react';
-import { getProducts, getTopSellingProducts } from '../../services/ProductService';
+import { getProducts } from '../../services/ProductService'; // Removed getTopSellingProducts import
 import './home.css';
 import Temoignages from '../pages/Temoignages';
-import { Link } from 'react-router-dom';
-import AddIcon from '@mui/icons-material/Add';
-import { Alert, Snackbar } from '@mui/material';
 import Newsletter from '../pages/Newsletter';
-import BannerSection from '../pages/BannerSection';
 
 function Home() {
-  const [topSellingProducts, setTopSellingProducts] = useState([]);
   const [products, setProducts] = useState([]);
-  const [showAd, setShowAd] = useState(true);
-  
-  useEffect(() => {
-    const fetchTopSellingProducts = async () => {
-      try {
-        const products = await getTopSellingProducts();
-        setTopSellingProducts(products);
-      } catch (error) {
-        console.error('Erreur lors de la récupération des produits les plus vendus :', error);
-      }
-    };
+  const [advertisementProduct, setAdvertisementProduct] = useState(null);
 
-    fetchTopSellingProducts();
-  }, []);
-
+  // Récupération des produits
   useEffect(() => {
     getProducts().then(data => {
       setProducts(data);
+      const adProduct = data.find(product => product.id === 1);
+      setAdvertisementProduct(adProduct);
     });
   }, []);
 
-  const productDetails = {
-    id: 12,
-    type: 'Réfrigérateur',
-    name: 'Réfrigérateur Haier HTF-520IP7',
-    description: 'Réfrigérateur écoénergétique avec technologie Haier',
-    price: 900,
-    imageUrl: 'https://cdn.lesnumeriques.com/optim/product/62/62935/f438a746-htf-520ip7__450_400.webp',
-    productUrl: 'https://www.example.com/products/refrigerator-bosch'
+  // Fonction pour obtenir des produits aléatoires
+  const getRandomProducts = (arr, num) => {
+    const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, num);
   };
 
-  const handleClose = () => {
-    setShowAd(false);
-  };
+  // Filtrer les meilleurs produits (prix > 700)
+  const bestSellingProducts = products.filter(product => product.price > 700);
+
+  // Affichage des 5 premiers produits
+  const firstFiveProducts = products.slice(0, 5);
+
+  // Obtenir 7 produits aléatoires
+  const randomProducts = getRandomProducts(products, 7);
 
   return (
-       <div className='page'>
-      
-      {/* Snackbar pour la publicité */}
-      <Snackbar open={showAd} autoHideDuration={10000} onClose={handleClose} anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
-        <Alert onClose={handleClose} severity="info">
-          <div>
-            <img src={productDetails.imageUrl} alt={productDetails.name} style={{ maxWidth: '100px', marginRight: '10px' }} />
-            <div>
-              <h2 style={{ fontSize: '1.5em', marginBottom: '5px', textAlign: 'left' }}>{productDetails.name}</h2>
-              <p style={{ fontSize: '1em', marginBottom: '10px', textAlign: 'left' }}>{productDetails.description}</p>
-              <p style={{ fontSize: '1em', marginBottom: '5px', textAlign: 'left' }}>Prix: {productDetails.price}€</p>
-              <Link to={`/product/${productDetails.id}`} >Voir Détails</Link>
+    <div className="page_home">
+      <div className="home_header">
+        {advertisementProduct && (
+          <div className="advertisement-container">
+            <div className="advertisement-background-text">
+              Publicité Spéciale: Profitez de l'offre exclusive !
+            </div>
+            <div className="advertisement-banner">
+              <img src={advertisementProduct.imageUrl} alt={advertisementProduct.name} />
+              <span className="advertisement-text-price">{advertisementProduct.price} TND</span>
+              <div className="advertisement-text">
+                <h2>{advertisementProduct.name}</h2>
+                <p>{advertisementProduct.description}</p>
+                <a href={advertisementProduct.productUrl} className="btn-buy">
+                  Acheter maintenant
+                </a>
+              </div>
             </div>
           </div>
-        </Alert>
-      </Snackbar>
-
-      {/* Section de la bannière promotionnelle */}
-      <section className="banner-section-home">
-        <BannerSection />
-      </section>
-
-      {/* Liste des produits */}
-      <h1 className='title_Home_barre'>Top Vente</h1>
-      <div className="gallery-container">
-        <div className="gallery-content">
-          {topSellingProducts.map(product => (
-            <div key={product.id} className="image-card"> 
-              <img src={product.imageUrl} alt={product.name} />
-              <div className="image-overlay"> 
-                <p>{product.name}</p> 
-              </div>
-            </div>
-          ))}
-        </div>
+        )}
       </div>
-      <div className='linkandtitle'>
-        <h1 className='title_Home'>Liste des Produits</h1>
-        <Link to="/products" className="show-more-button-home" >
-          <AddIcon className="show-more-icon" />Voir plus
-        </Link>
-      </div>
-      <div className="cards_home">
-        {products.slice(0, 10).map(product => (
-          <div className='Width_cards'>
-            <div className="card-image">
-              <img src={product.imageUrl} alt={product.name} className="product-image-card" />
-            </div>
-            <div className="category"> Électroménager </div>
-            <div className="heading">
-              {product.name}
-              <div className="author">
-                Prix: <span className="price">{product.price}€</span>
-              </div>
-              <Link to={`/product/${product.id}`} className="details-link">Voir Détails</Link>
-            </div>
+
+      <h1 className="title_Home_barre">Meilleures Ventes</h1>
+      <div className="carousel-container">
+        {bestSellingProducts.map(product => (
+          <div className="carousel-item" key={product.id}>
+            <img src={product.imageUrl} alt={product.name} />
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+            <span>{product.price} TND</span>
           </div>
         ))}
       </div>
-      <h1 className='title_Home_barre'>Témoignages clients</h1>
+
+      <h1 className="title_Home_barre">Nos Produits</h1>
+      <div className="carousel-container">
+        {firstFiveProducts.map(product => (
+          <div className="carousel-item" key={product.id}>
+            <img src={product.imageUrl} alt={product.name} />
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+            <span>{product.price} TND</span>
+          </div>
+        ))}
+      </div>
+
+      <h1 className="title_Home_barre">Top Promotions</h1>
+      <div className="carousel-container">
+        {randomProducts.map(product => (
+          <div className="carousel-item" key={product.id}>
+            <img src={product.imageUrl} alt={product.name} />
+            <h3>{product.name}</h3>
+            <p>{product.description}</p>
+            <span>{product.price} TND</span>
+          </div>
+        ))}
+      </div>
+
+      <h1 className="title_Home_barre">Témoignages clients</h1>
       <Temoignages />
-      <h1 className='title_Home_barre'>Subscribe</h1>
-      <Newsletter/>
-      
-   
+
+      <h1 className="title_Home_barre">Subscribe</h1>
+      <Newsletter />
     </div>
-   
   );
 }
 

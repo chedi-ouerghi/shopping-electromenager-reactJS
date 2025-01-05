@@ -1,27 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import './headerFooter.css';
+import { CartContext } from '../services/CartContext';
 
 const Header = () => {
-  const [cartItemCount, setCartItemCount] = useState(0);
-
-  useEffect(() => {
-    const cartItemsFromLocalStorage = JSON.parse(localStorage.getItem('cart')) || [];
-    setCartItemCount(cartItemsFromLocalStorage.length);
-  }, []);
-
+  const { cartItems } = useContext(CartContext); 
+  const [cartItemCount, setCartItemCount] = useState(cartItems.length);
 
   
+  useEffect(() => {
+    setCartItemCount(cartItems.length); 
+  }, [cartItems]);
+
   return (
-    <header>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/products">Products</Link></li>
-          <li>
+    <header className="header">
+      <nav className="navbar">
+        <ul className="nav-list">
+          <div className='left-nav'>
+            <li className="nav-item">
+              <Link to="/" className="nav-link">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/products" className="nav-link">Products</Link>
+            </li>
+          </div>
+          <li className="nav-item">
             <Link to="/cart" className="cart-link">
-              <ShoppingCartIcon />
-              <span className="badge">{cartItemCount}</span>
+              <ShoppingCartIcon className="cart-icon" />
+              {cartItemCount > 0 && (
+                <span className="badge">{cartItemCount}</span>
+              )}
             </Link>
           </li>
         </ul>

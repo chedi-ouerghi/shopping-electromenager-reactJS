@@ -1,23 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './ShoppingCart.css';
 import ShoppingCartIcon from '../utils/ShoppingCartIcon';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { CartContext } from '../../services/CartContext';
 
 const ShoppingCart = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const { cartItems, removeItemFromCart } = useContext(CartContext);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    setCartItems(cart);
-  }, []);
-
-  const removeItem = (itemId) => {
-    const updatedCart = cartItems.filter(item => item.id !== itemId);
-    setCartItems(updatedCart);
-    localStorage.setItem('cart', JSON.stringify(updatedCart)); // Mise à jour du localStorage
-  };
 
   const checkout = () => {
     navigate('/checkout');
@@ -27,7 +17,7 @@ const ShoppingCart = () => {
     <div className="shopping-cart">
       <ShoppingCartIcon width={60} height={50} color="black" />
       {cartItems.length === 0 ? (
-        <div className='length0'>
+        <div className="length0">
           <h4>Votre panier est vide!</h4>
           <p>Parcourez nos catégories et découvrez nos meilleures offres!</p>
           <Link to='/products' className='btn-commencez'>COMMENCEZ VOS ACHATS</Link>
@@ -41,9 +31,10 @@ const ShoppingCart = () => {
                 <div className="product-details-shopping">
                   <h3>{item.name}</h3>
                   <p>{item.price}€</p>
+                  <p>Quantité: {item.quantity}</p>
                   <DeleteIcon
                     className="delete-icon"
-                    onClick={() => removeItem(item.id)}
+                    onClick={() => removeItemFromCart(item.id)}
                     style={{ cursor: 'pointer', color: 'red' }}
                   />
                 </div>
@@ -52,7 +43,7 @@ const ShoppingCart = () => {
           </div>
           <div className="checkout-button-container">
             <button onClick={checkout}>Passer à la caisse</button>
-            <span className="item-count">{cartItems.length}</span>
+              <span className="item-count">{cartItems.reduce((total, item) => total + item.quantity, 0)}</span>
           </div>
         </>
       )}

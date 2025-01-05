@@ -1,0 +1,117 @@
+/* Product.css - Design Premium */
+
+:root {
+  --primary-color: #6c5ce7;
+  --secondary-color: #a29bfe;
+  --background-color: #f8f9fa;
+  --text-color: #2d3436;
+  --accent-color: #0984e3;
+  --hover-color: #74b9ff;
+  --button-color: #00b894;
+  --button-hover: #00cec9;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--background-color);
+}
+
+.product-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 40px;
+  margin: 10px auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  width: 98%;
+}
+
+.product-details:hover {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+.image-container {
+  flex: 1;
+  max-width: 400px;
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.product-info {
+  flex: 2;
+  padding: 20px;
+}
+
+.product-info h1 {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.product-info p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+.flex_boutton {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.product-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: var(--accent-color);
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.product-link:hover {
+  background: var(--hover-color);
+}
+
+.add-to-cart {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: var(--button-color);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border: none;
+}
+
+.add-to-cart:hover {
+  background: var(--button-hover);
+}
+
+.add-to-cart.added {
+  background: #fdcb6e;
+  color: #2d3436;
+}
+
+.add-to-cart.added:hover {
+  background: #e17055;
+}

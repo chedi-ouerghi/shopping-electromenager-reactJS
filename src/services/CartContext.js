@@ -15,8 +15,18 @@ export const CartProvider = ({ children }) => {
   }, [cartItems]);
 
   const addItemToCart = (item) => {
-    const updatedCart = [...cartItems, item];
-    setCartItems(updatedCart);
+    const existingItemIndex = cartItems.findIndex(cartItem => cartItem.id === item.id);
+    
+    if (existingItemIndex >= 0) {
+      
+      const updatedCart = [...cartItems];
+      updatedCart[existingItemIndex].quantity += 1;
+      setCartItems(updatedCart);
+    } else {
+      
+      const updatedCart = [...cartItems, { ...item, quantity: 1 }];
+      setCartItems(updatedCart);
+    }
   };
 
   const removeItemFromCart = (itemId) => {
@@ -25,7 +35,7 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addItemToCart, removeItemFromCart }}>
+    <CartContext.Provider value={{ cartItems, setCartItems, addItemToCart, removeItemFromCart }}>
       {children}
     </CartContext.Provider>
   );

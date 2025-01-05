@@ -53,8 +53,8 @@ const ProductList = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
-      const productHeight = 200; // Approximate height of a product card (adjust as necessary)
-      const threshold = productHeight * 5; // Show button after scrolling past 5 products
+      const productHeight = 200; 
+      const threshold = productHeight * 5; 
       setShowScrollTopButton(scrollTop > threshold);
     };
 
